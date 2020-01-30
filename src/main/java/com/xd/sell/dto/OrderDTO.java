@@ -1,11 +1,10 @@
-package com.xd.sell.dataobject;
+package com.xd.sell.dto;
 
+import com.xd.sell.dataobject.OrderDetail;
 import com.xd.sell.enums.OrderStatusEnum;
 import com.xd.sell.enums.PayStatusEnum;
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.math.BigDecimal;
@@ -13,15 +12,12 @@ import java.util.List;
 
 /**
  * @Auther: k
- * @Date: 2020/1/28 17:20
- * @Description:订单表
+ * @Date: 2020/1/29 09:49
+ * @Description:
  */
-@Entity
 @Data
-@DynamicUpdate
-public class OrderMaster {
+public class OrderDTO {
     // 订单id
-    @Id
     private String orderId;
     // 买家名字
     private String buyerName;
@@ -34,18 +30,9 @@ public class OrderMaster {
     // 金额。
     private BigDecimal orderAmount ;
     // 订单状态,默认0：新下单
-    private Integer orderStatus = OrderStatusEnum.NEW.getCode();
+    private Integer orderStatus;
     // 支付状态，默认未支付：0
-    private Integer payStatus= PayStatusEnum.NEW.getCode();
-
-//    @Transient  // 在数据库对应时忽略此字段，但是不建议这么做。
-//    private List<OrderDetail> orderDetailList;
-
-
-
-
-
-
-
-
+    private Integer payStatus;
+    // 订单detail
+    private List<OrderDetail> orderDetailList;
 }
