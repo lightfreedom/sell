@@ -14,7 +14,7 @@ public interface OrderService {
     // 创建订单
     OrderDTO create(OrderDTO orderDTO);
 
-    // 查询单个订单
+    // 根据订单id查询单个订单
     OrderDTO findOne(String id);
 
     // 查询订单列表
